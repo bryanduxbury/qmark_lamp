@@ -1,7 +1,7 @@
 
 // parameters
 material_thickness = 3;
-dimension = 8*25.4; // 8 inches on a side
+dimension = 6*25.4; // 6 inches on a side
 num_squares = 16;
 
 // calculated parameters
@@ -132,7 +132,7 @@ module top() {
 			rotate(a=[0, 0, angle]) translate([dimension/2, 0, 0]) rotate(a=[270, 0, 0]) sawtooth();
 		}
 
-		cylinder(r=3, h=material_thickness*2, center=true);
+		cylinder(r=4, h=material_thickness*2, center=true);
 	}
 }
 
@@ -201,8 +201,8 @@ module black_panel() {
 
 //assembled();
 
-//orange_panel();
+orange_panel();
 
 //white_panel();
 
-black_panel();
+//black_panel();
