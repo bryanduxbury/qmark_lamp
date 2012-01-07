@@ -69,14 +69,14 @@ void loop() {
     } else {
       digitalWrite(LIGHT_PIN, HIGH);
     }
-    
-    // always play the "coin" sound
-    playSound(SPEAKER_PIN, coin_sound_num_notes, coin_sound_notes, coin_sound_note_durations);
-    
+
     // if this is the 8th touch, then play the "one up" sound
     if (pressCount % 8 == 0) {
       playSound(SPEAKER_PIN, oneup_sound_num_notes, oneup_sound_notes, oneup_sound_note_durations);
-    }
+    } else {
+      // always play the "coin" sound
+      playSound(SPEAKER_PIN, coin_sound_num_notes, coin_sound_notes, coin_sound_note_durations);
+    }  
     
     // to "de-bounce" the touch, don't loop around again until the sensor check returns false
     while (checkSensor()) {}
