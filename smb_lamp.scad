@@ -1,7 +1,7 @@
 
 // parameters
 material_thickness = 3;
-dimension = 6*25.4; // 6 inches on a side
+dimension = 5.75*25.4; // 6 inches on a side
 num_squares = 16;
 
 // calculated parameters
@@ -201,8 +201,8 @@ module black_panel() {
 
 //assembled();
 
-orange_panel();
+//orange_panel();
 
 //white_panel();
 
-//black_panel();
+black_panel();
