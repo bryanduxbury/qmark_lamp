@@ -8,7 +8,7 @@
 #define CAP_SENSOR_RECEIVE_PIN 4
 
 int threshold = 200;
-int pressCount = 0;
+unsigned int pressCount = 0;
 
 int coin_sound_num_notes = 2;
 int coin_sound_notes[] = {NOTE_D6, NOTE_G6};
