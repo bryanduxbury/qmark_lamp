@@ -10,7 +10,7 @@ square_dim = dimension / num_squares;
 
 
 module sawtooth() {
-	translate([0, 0, -dimension/2 + square_dim/2]) union() {
+	translate([0, -laser_beam_width/2, -dimension/2 + square_dim/2]) union() {
 		for (i = [0:floor(num_squares/2)]) {
 			translate([0, 0, 2*i*square_dim]) cube([2*material_thickness, 2*material_thickness, square_dim-laser_beam_width], center=true);
 		}
