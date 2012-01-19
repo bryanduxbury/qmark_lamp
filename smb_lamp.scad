@@ -3,23 +3,23 @@
 material_thickness = 3;
 dimension = 5.75*25.4; // 6 inches on a side
 num_squares = 16;
+laser_beam_width = 0.188;
 
 // calculated parameters
 square_dim = dimension / num_squares;
 
 
-
 module sawtooth() {
 	translate([0, 0, -dimension/2 + square_dim/2]) union() {
 		for (i = [0:floor(num_squares/2)]) {
-			translate([0, 0, 2*i*square_dim]) cube([2*material_thickness, 2*material_thickness, square_dim+0.1], center=true);
+			translate([0, 0, 2*i*square_dim]) cube([2*material_thickness, 2*material_thickness, square_dim-laser_beam_width], center=true);
 		}
 	}
 }
 
 
 module side_outer() {
-	color([1, 0.49, 0.25, 0.60]) render() difference() {
+	color([1, 0.49, 0.25, 0.80]) render() difference() {
 		cube([material_thickness, dimension, dimension], center=true);
 		translate([0, -dimension/2, 0]) sawtooth();
 		rotate(a=[-90, 180, 0]) translate([0, -dimension/2, 0]) sawtooth();
@@ -109,13 +109,13 @@ module qmark_top() {
 }
 
 module qmark_bottom() {
-	cube([material_thickness*2, 2*square_dim + 0.1, 2*square_dim + 0.1], center=true);
+	cube([material_thickness*2, 2*square_dim + 0.001, 2*square_dim + 0.0001], center=true);
 }
 
 module qmark() {}
 
 module side() {
-	translate([-material_thickness - 0.1, 0, 0]) {
+	translate([-material_thickness - 0.0001, 0, 0]) {
 		side_inner_white();
 		translate([0, -3*square_dim, 0]) qmark_shadow_1();
 		translate([0, 0, -3*square_dim]) qmark_shadow_2();
@@ -126,7 +126,7 @@ module side() {
 }
 
 module top() {
-	color([1, 0.49, 0.25, 0.6]) difference() {
+	color([1, 0.49, 0.25, 0.8]) difference() {
 		cube([dimension, dimension, material_thickness], center=true);
 		for (angle=[0, 90, 180, 270]) {
 			rotate(a=[0, 0, angle]) translate([dimension/2, 0, 0]) rotate(a=[270, 0, 0]) sawtooth();
@@ -137,7 +137,7 @@ module top() {
 }
 
 module bottom() {
-	color([1, 0.49, 0.25, 0.6]) difference() {
+	color([1, 0.49, 0.25, 0.8]) difference() {
 		cube([dimension, dimension, material_thickness], center=true);
 		for (angle=[0, 90, 180, 270]) {
 			rotate(a=[0, 0, angle]) translate([dimension/2, 0, 0]) rotate(a=[90, 0, 0]) sawtooth();
@@ -199,10 +199,10 @@ module black_panel() {
 	}
 }
 
-//assembled();
+// assembled();
 
-//orange_panel();
+orange_panel();
 
-//white_panel();
+// white_panel();
 
-black_panel();
+// black_panel();
