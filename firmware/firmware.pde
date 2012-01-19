@@ -7,7 +7,7 @@
 #define CAP_SENSOR_SEND_PIN 3
 #define CAP_SENSOR_RECEIVE_PIN 4
 
-int threshold = 175;
+int threshold = 75;
 unsigned int pressCount = 0;
 
 int coin_sound_num_notes = 2;
@@ -77,9 +77,18 @@ void loop() {
       // always play the "coin" sound
       playSound(SPEAKER_PIN, coin_sound_num_notes, coin_sound_notes, coin_sound_note_durations);
     }  
-    
+//    delay(100);
     // to "de-bounce" the touch, don't loop around again until the sensor check returns false
-    while (checkSensor()) {}
+//    int state = LOW;
+    while (checkSensor()) {
+//      if (state == HIGH) {
+//        state = LOW;
+//      } else {
+//        state = HIGH;
+//      }
+//      digitalWrite(LIGHT_PIN, state);
+      delay(25);
+    }
   }
   delay(25);
 }
