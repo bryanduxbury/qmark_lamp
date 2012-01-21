@@ -132,6 +132,10 @@ module top() {
 			rotate(a=[0, 0, angle]) translate([dimension/2, 0, 0]) rotate(a=[270, 0, 0]) sawtooth();
 		}
 
+		for (angle=[0, 90, 180, 270]) {
+	    rotate(a=[0, 0, angle]) translate([dimension/2, dimension/2, 0]) cube([square_dim, material_thickness*2-laser_beam_width, material_thickness*2], center=true);
+	  }
+
 		cylinder(r=4, h=material_thickness*2, center=true);
 	}
 }
@@ -142,6 +146,10 @@ module bottom() {
 		for (angle=[0, 90, 180, 270]) {
 			rotate(a=[0, 0, angle]) translate([dimension/2, 0, 0]) rotate(a=[90, 0, 0]) sawtooth();
 		}
+		
+		for (angle=[0, 90, 180, 270]) {
+	    rotate(a=[0, 0, angle]) translate([dimension/2, dimension/2, 0]) cube([material_thickness*2-laser_beam_width, square_dim, material_thickness*2], center=true);
+	  }
 	}
 }
 
