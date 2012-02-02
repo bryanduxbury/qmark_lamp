@@ -3,7 +3,7 @@
 material_thickness = 3;
 dimension = 5.75*25.4; // 6 inches on a side
 num_squares = 16;
-laser_beam_width = 0.188;
+laser_beam_width = 0.127;
 
 // calculated parameters
 square_dim = dimension / num_squares;
