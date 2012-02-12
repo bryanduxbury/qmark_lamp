@@ -188,22 +188,28 @@ module white_panel() {
 }
 
 module black_panel() {
+  translate([0, 7 * square_dim, 0]) rotate([180, 0, 0]) %cube(size=[25.4*12, 25.4*12, 1]);
+  
 	projection(cut=true) rotate(a=[0, 90, 0]) {
-		for (i = [0:3]) {
+		translate([0, 3 * square_dim, 6.1*square_dim]) for (i = [0:19]) {
 			translate([0, -i * (square_dim+1), i * (square_dim+1)]) qmark_shadow_1();
 		}
 
-		translate([0, 4.5 * square_dim, -4.5 * square_dim]) for (i = [0:3]) {
+		translate([0, 0 * square_dim, 0 * square_dim]) for (i = [0:19]) {
 			translate([0, -i * (square_dim+1), i * (square_dim+1)]) qmark_shadow_2();
 		}
 
-		translate([0, 4 * square_dim, 5.5 * square_dim]) for (i = [0:15]) {
-			translate([0, floor(i/4) * (square_dim + 1), i%4 * (square_dim+1)]) corner_nails();
-		}
-
-		translate([0, -3 * square_dim, -1 * square_dim]) for (i = [0:3]) {
-			translate([0, i * (square_dim + 1), -i * (square_dim+1)]) qmark_shadow_3();
-		}
+    translate([0, -25 * square_dim, 1 * square_dim]) for (i = [0:20*4-1]) {
+      translate([0, floor(i/10) * (square_dim + 1), i%10 * (square_dim+1)]) corner_nails();
+    }
+    
+    translate([0, -3 * square_dim, 22* square_dim]) for (i = [0:20*4-1]) {
+      translate([0, floor(i/10) * (square_dim + 1), i%10 * (square_dim+1)]) corner_nails();
+    }
+    
+    translate([0, -24.5 * square_dim + 0.1, 21.2 * square_dim]) for (i = [0:19]) {
+      translate([0, i * (square_dim + 1), -i * (square_dim+1)]) qmark_shadow_3();
+    }
 	}
 }
 
