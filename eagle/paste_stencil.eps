@@ -1,0 +1,173 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: EAGLE Drawing /Users/bryanduxbury/projects/qmark_lamp/eagle/smd_circuit.brd
+%%Creator: EAGLE
+%%Pages: 1
+%%BoundingBox: 0 0 162 162
+%%EndComments
+
+% Coordinate transfer:
+
+/EU { 254 div 0.072 mul } def
+/inch { 72 mul } def
+
+% Linestyle:
+
+1 setlinecap
+1 setlinejoin
+
+% Drawing functions:
+
+/l {  % draw a line
+   /lw exch def
+   /y2 exch def
+   /x2 exch def
+   /y1 exch def
+   /x1 exch def
+   newpath
+   x1 EU y1 EU moveto
+   x2 EU y2 EU lineto
+   lw EU setlinewidth
+   stroke
+   } def
+
+/h {  % draw a hole
+   /d  exch def
+   /y  exch def
+   /x  exch def
+   d 0 gt {
+     newpath
+     x EU y EU d 2 div EU 0 360 arc
+     currentgray dup
+     1 exch sub setgray
+     fill
+     setgray
+     } if
+   } def
+
+/b {  % draw a bar
+   /an exch def
+   /y2 exch def
+   /x2 exch def
+   /y1 exch def
+   /x1 exch def
+   /w2 x2 x1 sub 2 div EU def
+   /h2 y2 y1 sub 2 div EU def
+   gsave
+   x1 x2 add 2 div EU y1 y2 add 2 div EU translate
+   an rotate
+   newpath
+   w2     h2     moveto
+   w2 neg h2     lineto
+   w2 neg h2 neg lineto
+   w2     h2 neg lineto
+   closepath
+   fill
+   grestore
+   } def
+
+/c {  % draw a circle
+   /lw exch def
+   /rd exch def
+   /y  exch def
+   /x  exch def
+   newpath
+   lw EU setlinewidth
+   x EU y EU rd EU 0 360 arc
+   stroke
+   } def
+
+/a {  % draw an arc
+   /lc exch def
+   /ae exch def
+   /as exch def
+   /lw exch def
+   /rd exch def
+   /y  exch def
+   /x  exch def
+   lw rd 2 mul gt {
+     /rd rd lw 2 div add 2 div def
+     /lw rd 2 mul def
+     } if
+   currentlinecap currentlinejoin
+   lc setlinecap 0 setlinejoin
+   newpath
+   lw EU setlinewidth
+   x EU y EU rd EU as ae arc
+   stroke
+   setlinejoin setlinecap
+   } def
+
+/p {  % draw a pie
+   /d exch def
+   /y exch def
+   /x exch def
+   newpath
+   x EU y EU d 2 div EU 0 360 arc
+   fill
+   } def
+
+/edge { 0.20710678119 mul } def
+
+/o {  % draw an octagon
+   /an exch def
+   /dy exch def
+   /dx exch def
+   /y  exch def
+   /x  exch def
+   gsave
+   x EU y EU translate
+   an dx dy lt { 90 add /dx dy /dy dx def def } if rotate
+   newpath
+      0 dx 2 div sub EU                    0 dy edge  add EU moveto
+      0 dx dy sub 2 div sub dy edge sub EU 0 dy 2 div add EU lineto
+      0 dx dy sub 2 div add dy edge add EU 0 dy 2 div add EU lineto
+      0 dx 2 div add EU                    0 dy edge  add EU lineto
+      0 dx 2 div add EU                    0 dy edge  sub EU lineto
+      0 dx dy sub 2 div add dy edge add EU 0 dy 2 div sub EU lineto
+      0 dx dy sub 2 div sub dy edge sub EU 0 dy 2 div sub EU lineto
+      0 dx 2 div sub EU                    0 dy edge  sub EU lineto
+   closepath
+   fill
+   grestore
+   } def
+
+298550 283690 308550 294690 270.0 b
+298550 266690 308550 277690 270.0 b
+196560 248520 206560 259520 180.0 b
+179560 248520 189560 259520 180.0 b
+195680 184140 205680 195140 90.0 b
+195680 201140 205680 212140 90.0 b
+320980 226700 330980 240700 270.0 b
+298980 217200 308980 231200 270.0 b
+298980 236200 308980 250200 270.0 b
+234462 211729 240558 233827 0.0 b
+247162 211729 253258 233827 0.0 b
+259862 211729 265958 233827 0.0 b
+272562 211729 278658 233827 0.0 b
+272562 279039 278658 301137 0.0 b
+259862 279039 265958 301137 0.0 b
+247162 279039 253258 301137 0.0 b
+234462 279039 240558 301137 0.0 b
+203300 321520 213300 335520 0.0 b
+212800 299520 222800 313520 0.0 b
+193800 299520 203800 313520 0.0 b
+220060 377560 245060 389560 270.0 b
+268060 377560 293060 389560 270.0 b
+241560 374560 271560 392560 270.0 b
+267640 331960 283640 358960 180.0 b
+239640 331960 255640 358960 180.0 b
+347060 250560 372060 262560 270.0 b
+395060 250560 420060 262560 270.0 b
+368560 247560 398560 265560 270.0 b
+268060 123560 293060 135560 90.0 b
+220060 123560 245060 135560 90.0 b
+241560 120560 271560 138560 90.0 b
+140060 250560 165060 262560 90.0 b
+92060 250560 117060 262560 90.0 b
+113560 247560 143560 265560 90.0 b
+394640 283700 410640 310700 180.0 b
+366640 283700 382640 310700 180.0 b
+197760 114760 213760 141760 90.0 b
+197760 142760 213760 169760 90.0 b
+102480 202420 118480 229420 0.0 b
+130480 202420 146480 229420 0.0 b
