@@ -1,173 +1,117 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%Title: EAGLE Drawing /Users/bryanduxbury/projects/qmark_lamp/eagle/smd_circuit.brd
-%%Creator: EAGLE
+%%Creator: cairo 1.10.2 (http://cairographics.org)
+%%CreationDate: Fri Feb 17 23:57:28 2012
 %%Pages: 1
-%%BoundingBox: 0 0 162 162
+%%BoundingBox: 0 -1 90 81
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
 %%EndComments
-
-% Coordinate transfer:
-
-/EU { 254 div 0.072 mul } def
-/inch { 72 mul } def
-
-% Linestyle:
-
-1 setlinecap
-1 setlinejoin
-
-% Drawing functions:
-
-/l {  % draw a line
-   /lw exch def
-   /y2 exch def
-   /x2 exch def
-   /y1 exch def
-   /x1 exch def
-   newpath
-   x1 EU y1 EU moveto
-   x2 EU y2 EU lineto
-   lw EU setlinewidth
-   stroke
-   } def
-
-/h {  % draw a hole
-   /d  exch def
-   /y  exch def
-   /x  exch def
-   d 0 gt {
-     newpath
-     x EU y EU d 2 div EU 0 360 arc
-     currentgray dup
-     1 exch sub setgray
-     fill
-     setgray
-     } if
-   } def
-
-/b {  % draw a bar
-   /an exch def
-   /y2 exch def
-   /x2 exch def
-   /y1 exch def
-   /x1 exch def
-   /w2 x2 x1 sub 2 div EU def
-   /h2 y2 y1 sub 2 div EU def
-   gsave
-   x1 x2 add 2 div EU y1 y2 add 2 div EU translate
-   an rotate
-   newpath
-   w2     h2     moveto
-   w2 neg h2     lineto
-   w2 neg h2 neg lineto
-   w2     h2 neg lineto
-   closepath
-   fill
-   grestore
-   } def
-
-/c {  % draw a circle
-   /lw exch def
-   /rd exch def
-   /y  exch def
-   /x  exch def
-   newpath
-   lw EU setlinewidth
-   x EU y EU rd EU 0 360 arc
-   stroke
-   } def
-
-/a {  % draw an arc
-   /lc exch def
-   /ae exch def
-   /as exch def
-   /lw exch def
-   /rd exch def
-   /y  exch def
-   /x  exch def
-   lw rd 2 mul gt {
-     /rd rd lw 2 div add 2 div def
-     /lw rd 2 mul def
-     } if
-   currentlinecap currentlinejoin
-   lc setlinecap 0 setlinejoin
-   newpath
-   lw EU setlinewidth
-   x EU y EU rd EU as ae arc
-   stroke
-   setlinejoin setlinecap
-   } def
-
-/p {  % draw a pie
-   /d exch def
-   /y exch def
-   /x exch def
-   newpath
-   x EU y EU d 2 div EU 0 360 arc
-   fill
-   } def
-
-/edge { 0.20710678119 mul } def
-
-/o {  % draw an octagon
-   /an exch def
-   /dy exch def
-   /dx exch def
-   /y  exch def
-   /x  exch def
-   gsave
-   x EU y EU translate
-   an dx dy lt { 90 add /dx dy /dy dx def def } if rotate
-   newpath
-      0 dx 2 div sub EU                    0 dy edge  add EU moveto
-      0 dx dy sub 2 div sub dy edge sub EU 0 dy 2 div add EU lineto
-      0 dx dy sub 2 div add dy edge add EU 0 dy 2 div add EU lineto
-      0 dx 2 div add EU                    0 dy edge  add EU lineto
-      0 dx 2 div add EU                    0 dy edge  sub EU lineto
-      0 dx dy sub 2 div add dy edge add EU 0 dy 2 div sub EU lineto
-      0 dx dy sub 2 div sub dy edge sub EU 0 dy 2 div sub EU lineto
-      0 dx 2 div sub EU                    0 dy edge  sub EU lineto
-   closepath
-   fill
-   grestore
-   } def
-
-298550 283690 308550 294690 270.0 b
-298550 266690 308550 277690 270.0 b
-196560 248520 206560 259520 180.0 b
-179560 248520 189560 259520 180.0 b
-195680 184140 205680 195140 90.0 b
-195680 201140 205680 212140 90.0 b
-320980 226700 330980 240700 270.0 b
-298980 217200 308980 231200 270.0 b
-298980 236200 308980 250200 270.0 b
-234462 211729 240558 233827 0.0 b
-247162 211729 253258 233827 0.0 b
-259862 211729 265958 233827 0.0 b
-272562 211729 278658 233827 0.0 b
-272562 279039 278658 301137 0.0 b
-259862 279039 265958 301137 0.0 b
-247162 279039 253258 301137 0.0 b
-234462 279039 240558 301137 0.0 b
-203300 321520 213300 335520 0.0 b
-212800 299520 222800 313520 0.0 b
-193800 299520 203800 313520 0.0 b
-220060 377560 245060 389560 270.0 b
-268060 377560 293060 389560 270.0 b
-241560 374560 271560 392560 270.0 b
-267640 331960 283640 358960 180.0 b
-239640 331960 255640 358960 180.0 b
-347060 250560 372060 262560 270.0 b
-395060 250560 420060 262560 270.0 b
-368560 247560 398560 265560 270.0 b
-268060 123560 293060 135560 90.0 b
-220060 123560 245060 135560 90.0 b
-241560 120560 271560 138560 90.0 b
-140060 250560 165060 262560 90.0 b
-92060 250560 117060 262560 90.0 b
-113560 247560 143560 265560 90.0 b
-394640 283700 410640 310700 180.0 b
-366640 283700 382640 310700 180.0 b
-197760 114760 213760 141760 90.0 b
-197760 142760 213760 169760 90.0 b
-102480 202420 118480 229420 0.0 b
-130480 202420 146480 229420 0.0 b
+%%BeginProlog
+/cairo_eps_state save def
+/dict_count countdictstack def
+/op_count count 1 sub def
+userdict begin
+/q { gsave } bind def
+/Q { grestore } bind def
+/cm { 6 array astore concat } bind def
+/w { setlinewidth } bind def
+/J { setlinecap } bind def
+/j { setlinejoin } bind def
+/M { setmiterlimit } bind def
+/d { setdash } bind def
+/m { moveto } bind def
+/l { lineto } bind def
+/c { curveto } bind def
+/h { closepath } bind def
+/re { exch dup neg 3 1 roll 5 3 roll moveto 0 rlineto
+      0 exch rlineto 0 rlineto closepath } bind def
+/S { stroke } bind def
+/f { fill } bind def
+/f* { eofill } bind def
+/n { newpath } bind def
+/W { clip } bind def
+/W* { eoclip } bind def
+/BT { } bind def
+/ET { } bind def
+/pdfmark where { pop globaldict /?pdfmark /exec load put }
+    { globaldict begin /?pdfmark /pop load def /pdfmark
+    /cleartomark load def end } ifelse
+/BDC { mark 3 1 roll /BDC pdfmark } bind def
+/EMC { mark /EMC pdfmark } bind def
+/cairo_store_point { /cairo_point_y exch def /cairo_point_x exch def } def
+/Tj { show currentpoint cairo_store_point } bind def
+/TJ {
+  {
+    dup
+    type /stringtype eq
+    { show } { -0.001 mul 0 cairo_font_matrix dtransform rmoveto } ifelse
+  } forall
+  currentpoint cairo_store_point
+} bind def
+/cairo_selectfont { cairo_font_matrix aload pop pop pop 0 0 6 array astore
+    cairo_font exch selectfont cairo_point_x cairo_point_y moveto } bind def
+/Tf { pop /cairo_font exch def /cairo_font_matrix where
+      { pop cairo_selectfont } if } bind def
+/Td { matrix translate cairo_font_matrix matrix concatmatrix dup
+      /cairo_font_matrix exch def dup 4 get exch 5 get cairo_store_point
+      /cairo_font where { pop cairo_selectfont } if } bind def
+/Tm { 2 copy 8 2 roll 6 array astore /cairo_font_matrix exch def
+      cairo_store_point /cairo_font where { pop cairo_selectfont } if } bind def
+/g { setgray } bind def
+/rg { setrgbcolor } bind def
+/d1 { setcachedevice } bind def
+%%EndProlog
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox: 0 -1 90 81
+%%EndPageSetup
+q 0 -1 90 82 rectclip q
+0 80.504 90 -81 re W n
+0 g
+56.547 50.918 3.121 -2.836 re f
+56.547 46.098 3.121 -2.832 re f
+27.781 41.09 2.832 -3.117 re f
+22.961 41.09 2.836 -3.117 re f
+27.387 22.699 3.121 -2.836 re f
+27.387 27.52 3.121 -2.836 re f
+62.48 35.188 3.969 -2.832 re f
+56.246 32.496 3.969 -2.836 re f
+56.246 37.883 3.969 -2.836 re f
+38.523 33.809 1.727 -6.266 re f
+42.125 33.809 1.727 -6.266 re f
+45.723 33.809 1.73 -6.266 re f
+49.324 33.809 1.727 -6.266 re f
+49.324 52.887 1.727 -6.262 re f
+45.723 52.887 1.73 -6.262 re f
+42.125 52.887 1.727 -6.262 re f
+38.523 52.887 1.727 -6.262 re f
+29.691 62.633 2.832 -3.969 re f
+32.383 56.399 2.836 -3.969 re f
+26.996 56.399 2.836 -3.969 re f
+36.285 79.793 3.398 -7.086 re f
+49.891 79.793 3.402 -7.086 re f
+42.234 80.504 5.105 -8.504 re f
+47.93 69.278 4.535 -7.652 re f
+39.992 69.278 4.535 -7.652 re f
+72.285 43.797 3.398 -7.09 re f
+85.891 43.797 3.402 -7.09 re f
+78.238 44.504 5.102 -8.504 re f
+49.891 7.797 3.402 -7.09 re f
+36.285 7.797 3.398 -7.09 re f
+42.234 8.504 5.105 -8.504 re f
+13.605 43.797 3.402 -7.09 re f
+0 43.797 3.402 -7.09 re f
+5.953 44.504 5.102 -8.504 re f
+83.926 55.598 4.539 -7.652 re f
+75.992 55.598 4.535 -7.652 re f
+26.559 6.153 7.656 -4.535 re f
+26.559 14.086 7.656 -4.535 re f
+1.109 32.559 4.535 -7.652 re f
+9.047 32.559 4.535 -7.652 re f
+Q Q
+showpage
+%%Trailer
+count op_count sub {pop} repeat
+countdictstack dict_count sub {end} repeat
+cairo_eps_state restore
+%%EOF
