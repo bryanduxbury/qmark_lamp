@@ -1,7 +1,7 @@
 
 // parameters
 material_thickness = 3;
-dimension = 5.75*25.4; // 6 inches on a side
+dimension = 2.5*25.4; // 2.5 inches on a side
 num_squares = 16;
 laser_beam_width = 0.127;
 
@@ -215,8 +215,8 @@ module black_panel() {
 
 // assembled();
 
-orange_panel();
+// orange_panel();
 
 // white_panel();
 
-// black_panel();
+black_panel();
