@@ -1,7 +1,7 @@
 
 // parameters
 material_thickness = 3;
-dimension = 2.5*25.4; // 2.5 inches on a side
+dimension = 5.75*25.4; // 2.5 inches on a side
 num_squares = 16;
 laser_beam_width = 0.127;
 
@@ -213,10 +213,26 @@ module black_panel() {
 	}
 }
 
+module single_silk_panel() {
+  projection(cut=true) {
+    rotate([0, 90, 0]) {
+      translate([0, -dimension/2 - 2 * 25.4, 0]) side_inner_white();
+  
+      translate([0, dimension/2 + 2 * 25.4, 0]) {
+        translate([0, -3*square_dim, 0]) qmark_shadow_1();
+    	  translate([0, 0, -3*square_dim]) qmark_shadow_2();
+    	  translate([0, 0, -6*square_dim]) qmark_shadow_3();
+      }
+    }
+  }
+}
+
 // assembled();
 
 // orange_panel();
 
 // white_panel();
 
-black_panel();
+// black_panel();
+
+single_silk_panel();
