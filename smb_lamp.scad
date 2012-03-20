@@ -3,14 +3,17 @@
 material_thickness = 3;
 dimension = 5.75*25.4; // 2.5 inches on a side
 num_squares = 16;
-laser_beam_width = 0.127;
+// laser_beam_width = 0.1524; // .006 inches
+laser_beam_width = 0.127; // .005 inches
+// laser_beam_width = 0.1016; // .004 inches
+// laser_beam_width = 0.0762; // .003 inches
 
 // calculated parameters
 square_dim = dimension / num_squares;
 
 
 module sawtooth() {
-	translate([0, -laser_beam_width/2, -dimension/2 + square_dim/2]) union() {
+	#translate([0, -laser_beam_width/2, -dimension/2 + square_dim/2]) union() {
 		for (i = [0:floor(num_squares/2)]) {
 			translate([0, 0, 2*i*square_dim]) cube([2*material_thickness, 2*material_thickness, square_dim-laser_beam_width], center=true);
 		}
@@ -19,7 +22,7 @@ module sawtooth() {
 
 
 module side_outer() {
-	color([1, 0.49, 0.25, 0.80]) render() difference() {
+	color([1, 0.49, 0.25, 0.80]) render() !difference() {
 		cube([material_thickness, dimension, dimension], center=true);
 		translate([0, -dimension/2, 0]) sawtooth();
 		rotate(a=[-90, 180, 0]) translate([0, -dimension/2, 0]) sawtooth();
@@ -227,7 +230,7 @@ module single_silk_panel() {
   }
 }
 
-// assembled();
+assembled();
 
 // orange_panel();
 
@@ -235,4 +238,4 @@ module single_silk_panel() {
 
 // black_panel();
 
-single_silk_panel();
+// single_silk_panel();
