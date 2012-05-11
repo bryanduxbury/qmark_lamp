@@ -1,7 +1,7 @@
 
 // parameters
 material_thickness = 3;
-dimension = 5.75*25.4; // 2.5 inches on a side
+dimension = 17.75*25.4; // 2.5 inches on a side
 num_squares = 16;
 // laser_beam_width = 0.1524; // .006 inches
 laser_beam_width = 0.127; // .005 inches
@@ -22,7 +22,7 @@ module sawtooth() {
 
 
 module side_outer() {
-	color([1, 0.49, 0.25, 0.80]) render() !difference() {
+	color([1, 0.49, 0.25, 0.80]) render() difference() {
 		cube([material_thickness, dimension, dimension], center=true);
 		translate([0, -dimension/2, 0]) sawtooth();
 		rotate(a=[-90, 180, 0]) translate([0, -dimension/2, 0]) sawtooth();
@@ -230,9 +230,9 @@ module single_silk_panel() {
   }
 }
 
-assembled();
+// assembled();
 
-// orange_panel();
+orange_panel();
 
 // white_panel();
 
