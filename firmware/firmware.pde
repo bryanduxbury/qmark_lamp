@@ -2,10 +2,10 @@
 
 #include "notes.h"
 
-#define SPEAKER_PIN 1
-#define LIGHT_PIN 0
+#define SPEAKER_PIN 0
+#define LIGHT_PIN 1
 #define CAP_SENSOR_SEND_PIN 3
-#define CAP_SENSOR_RECEIVE_PIN 4
+#define CAP_SENSOR_RECEIVE_PIN 2
 
 int threshold = 150;
 unsigned int pressCount = 0;
@@ -46,16 +46,20 @@ void playSound(int speaker_pin, int num_notes, int notes[], int durations[]) {
 }
 
 boolean checkSensor() {
-  int readValue = cs_4_2.capSense(30);
-  if (readValue == -2) {
-    for (int i = 0; i < 2; i++) {
-      digitalWrite(LIGHT_PIN, HIGH);
-      delay(500);
-      digitalWrite(LIGHT_PIN, LOW);
-      delay(500);
-    }
+  if (digitalRead(2) == HIGH) {
+    return true;
   }
-  return readValue > threshold;
+  return false;
+//  int readValue = cs_4_2.capSense(30);
+//  if (readValue == -2) {
+//    for (int i = 0; i < 2; i++) {
+//      digitalWrite(LIGHT_PIN, HIGH);
+//      delay(500);
+//      digitalWrite(LIGHT_PIN, LOW);
+//      delay(500);
+//    }
+//  }
+//  return readValue > threshold;
 }
 
 void loop() {

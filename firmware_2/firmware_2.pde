@@ -4,7 +4,7 @@
 
 // currently spec'd for attiny84
 #define SPEAKER_PIN 2
-#define LIGHT_PIN 3
+#define LIGHT_PIN 10
 #define CAP_SENSOR_SEND_PIN 4
 #define CAP_SENSOR_RECEIVE_PIN 5
 
