@@ -3,10 +3,10 @@
 #include "notes.h"
 
 // currently spec'd for attiny84
-#define SPEAKER_PIN 2
+#define SPEAKER_PIN 9
 #define LIGHT_PIN 10
-#define CAP_SENSOR_SEND_PIN 4
-#define CAP_SENSOR_RECEIVE_PIN 5
+#define CAP_SENSOR_SEND_PIN 3
+#define CAP_SENSOR_RECEIVE_PIN 2
 
 int threshold = 150;
 unsigned int pressCount = 0;
