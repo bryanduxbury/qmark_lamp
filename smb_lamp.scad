@@ -140,6 +140,19 @@ module top() {
     }
 
     cylinder(r=4, h=material_thickness*2, center=true);
+
+    assign(ywidth=[4, 6, 8, 10, 10, 10, 10, 8, 6, 4])
+    assign(grill_cube_dim=dimension*0.3 / 19)
+    translate([dimension/4, 0, 0])
+    for (angle=[0:0]) {
+      for (x=[0:9]) {
+        for (y=[0:(ywidth[x])-1]) {
+          translate([-19 * grill_cube_dim / 2 + grill_cube_dim/2 + x * grill_cube_dim * 2, (ywidth[x] * 2 - 1) / 2 * -grill_cube_dim + grill_cube_dim/2 + y * grill_cube_dim * 2, 0]) 
+            cube(size=[grill_cube_dim, grill_cube_dim, material_thickness*2], center=true);
+        }
+      }
+    }
+    
   }
 }
 
@@ -169,6 +182,7 @@ module assembled() {
 
 module orange_panel() {
   projection(cut=true) {
+    top();
     // for (i = [0:0]) {
     //   translate([i * (dimension + 1), 0, 0]) rotate(a=[0, 90, 0]) side_outer();
     // }
@@ -176,7 +190,7 @@ module orange_panel() {
     //   rotate(a=[0, 90, 0]) side_outer();
     //   translate([dimension + 1, 0, 0]) top();
       // translate([2*(dimension + 1), 0, 0]) 
-      bottom();
+      // bottom();
     // }
   }
 
