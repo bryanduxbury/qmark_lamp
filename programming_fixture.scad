@@ -1,3 +1,7 @@
+// TODOs
+// - add hole for go switch
+// - add hole for reset enable switch
+
 t = 3; // acrylic
 
 d = 1/8 * 25.4; // #4-40 screws
@@ -14,7 +18,9 @@ pogo_pin_exposed_shaft_len=t;
 
 overall_width = 7 * 25.4;
 overall_height = 5*25.4;
-inside_height = 50;
+
+closing_screw_len = 25.4 * 1.75;
+inside_height = closing_screw_len - 3*t;
 
 washer_t = 1;
 
@@ -37,6 +43,14 @@ module _blk() {
 module _pcb() {
   color([0/255, 255/255, 0/255]) {
     child(0);
+  }
+}
+
+module _screw(head_t, head_d, d, l) {
+  color([32/255, 32/255, 32/255])
+  union() {
+    translate([0, 0, head_t/2]) cylinder(r=head_d/2, h=head_t, center=true);
+    translate([0, 0, -l/2]) cylinder(r=d/2, h=l, center=true);
   }
 }
 
@@ -235,7 +249,7 @@ module pogo_assembly() {
       // translate([0, 0, pcb_t + 1/4 * 25.4]) 
       translate([0, 0, pogo_pin_static_len - pogo_pin_exposed_shaft_len - pcb_t]) 
         pogo_bottom();
-      
+
       for (xy=[
         [400, 350], 
         [700, 350], 
@@ -254,7 +268,38 @@ module pogo_assembly() {
   }
 }
 
-module bed_bottom() {
+module bottom_top_base() {
+  difference() {
+    // main outline
+    _rounded_rect(overall_width, overall_height, t, t);
+
+    // tab slots across the top and bottom
+    for(x=[-2:2], y=[-1,1]) {
+      translate([x * (overall_width/5), y * (overall_height / 2 - t - t/2), 0]) cube(size=[tab_width, t, t*2], center=true);
+    }
+
+    // tab slots down the sides
+    for(x=[-1,1], y=[-1:1]) {
+      translate([x * (overall_width - t*3)/2, y * overall_height / 3, 0]) cube(size=[t, tab_width, t*2], center=true);
+    }
+
+    // holes for the pogo assembly
+    rotate([180, 0, 90]) for (xy=[[500, -550], [500,350], [-600, 350], [-300, -550]]) {
+      mil_to_mm() 
+        translate([xy[0], xy[1], 0]) 
+          cylinder(r=125/2, h=1000, center=true);
+    }
+
+    // holes for the sandwiching screws
+    for(x=[-1:1], y=[-1:1]) {
+      if (!(x == 0 && y==0)) {
+        translate([x * (overall_width - t*4 - d)/2, y * (overall_height - t*4 - d)/2, 0]) cylinder(r=d/2, h=t*2, center=true, $fn=36);
+      }
+    }
+  }
+}
+
+module top() {
   color([128/255, 32/255, 32/255])
   assign(board_width = 3 * 25.4)
   assign(frame_thickness = 12)
@@ -262,29 +307,17 @@ module bed_bottom() {
   assign(corner_radius = 4)
   render()
   difference() {
-    _rounded_rect(overall_width, overall_height, t, t);
+    bottom_top_base();
     cube(size=[mm(700), mm(700), t*2], center=true);
 
-    for(x=[-2:2], y=[-1,1]) {
-      translate([x * (overall_width/5), y * (overall_height / 2 - t - t/2), 0]) cube(size=[tab_width, t, t*2], center=true);
-    }
-
-    rotate([180, 0, 90]) for (xy=[[500, -550], [500,350], [-600, 350], [-300, -550]]) {
-      mil_to_mm() 
-        translate([xy[0], xy[1], 0]) 
-          cylinder(r=125/2, h=1000, center=true);
-    }
-
+    // mounting holes for the board frame
     for (x=[-1,1], y=[-1,1]) {
       translate([x * (frame_width / 2 - frame_thickness / 2), y * (frame_width / 2 - frame_thickness / 2), 0]) 
-        cylinder(r=1.6, h=t*2, center=true, $fn=36);
+        cylinder(r=d/2, h=t*2, center=true, $fn=36);
     }
 
-    for(x=[-1,1], y=[-1:1]) {
-      translate([x * (overall_width - t*3)/2, y * overall_height / 3, 0]) cube(size=[t, tab_width, t*2], center=true);
-    }
-
-    translate([overall_width/2 - t*3 - 150 / 1000 * 25.4, 0, 0]) {
+    // led board
+    translate([overall_width/2 - t*2 - d - 2 - 5, 0, 0]) {
       for (y=[-2:2]) {
         translate([0, y * mm(500), 0]) cylinder(r=5.2, h=t*2, center=true, $fn=72);
       }
@@ -315,39 +348,21 @@ module board_frame() {
   }
 }
 
-module base() {
+module bottom() {
   color([32/255, 32/255, 96/255])
   difference() {
-    _rounded_rect(overall_width, overall_height, t, t);
-    for(x=[-2:2], y=[-1,1]) {
-      translate([x * (overall_width/5), y * (overall_height / 2 - t - t/2), 0]) cube(size=[tab_width, t, t*2], center=true);
+    bottom_top_base();
+    translate([-overall_width/2 + t * 2 + d + 2, overall_height/2 - t*2, 0]) {
+      rotate([0, 0, -90]) 
+      linear_extrude(height=t*2, center=true)
+      mil_to_mm()
+      for (xy = [[550, 100], [600, 2000], [2600, 300], [2600, 1400]]) {
+        translate([xy[0], xy[1], 0]) circle(r=125/2);
+      }
     }
   }
 }
 
-module assembled() {
-  pogo_assembly();
-  translate([0, 0, t/2]) bed_bottom();
-  translate([0, 0, t + t/2]) board_frame();
-  
-  translate([-overall_width / 2 + t * 3, overall_height/2 - t * 2, -inside_height + pcb_t/2 + washer_t]) rotate([0, 0, -90]) controller_package();
-  translate([0, 0, -inside_height - t/2]) base();
-  
-  translate([overall_width/2 - t * 3 - 150/1000 * 25.4, 0, 0]) rotate([0, 0, -90]) led_board_assembly();
-
-  
-  translate([0, 0, -inside_height/2]) {
-    translate([0, overall_height/2 - t - t/2, 0]) rotate([90, 0, 0]) back();
-
-    for (x=[-1,1]) {
-      translate([x * (overall_width/2 - t - t/2), 0, 0]) rotate([90, 0, 90]) side();
-    }
-
-    translate([0, -overall_height/2 + t + t/2, 0]) rotate([90, 0, 0]) front();
-  }
-  
-
-}
 
 module back() {
   difference() {
@@ -363,10 +378,10 @@ module back() {
     }
 
     translate([0, -inside_height/2 + washer_t + pcb_t + 450/1000 * 25.4 / 2, 0]) {
-      translate([-overall_width / 2 + t*3 + 0.1 * 25.4 + 350/1000*25.4/2, 0, 0]) 
+      translate([-overall_width / 2 + t*2 + d + 2 + 0.1 * 25.4 + 350/1000*25.4/2, 0, 0]) 
         cube(size=[375/1000 * 25.4, 475/1000 * 25.4, t*2], center=true);
 
-      translate([-overall_width / 2 + t*3 + 1275/1000 * 25.4 + 450/1000*25.4/2, 0, 0]) 
+      translate([-overall_width / 2 + t*2 + d + 2 + 1275/1000 * 25.4 + 450/1000*25.4/2, 0, 0]) 
         cube(size=[475/1000 * 25.4, 475/1000 * 25.4, t*2], center=true);
     }
   }
@@ -401,6 +416,34 @@ module side() {
     for(x=[-1,1], y=[-1,1]) {
       translate([x * (overall_height - t*4)/2, y * inside_height / 4, 0]) cube(size=[t*2, tab_width, t], center=true);
     }
+  }
+}
+
+module assembled() {
+  pogo_assembly();
+  translate([0, 0, t/2]) %top();
+  translate([0, 0, t + t/2]) board_frame();
+  
+  translate([-overall_width / 2 + t * 2 + d + 2, overall_height/2 - t * 2, -inside_height + pcb_t/2 + washer_t]) rotate([0, 0, -90]) controller_package();
+  translate([0, 0, -inside_height - t/2]) bottom();
+  
+  translate([overall_width/2 - t * 2 - d - 2 - 5, 0, 0]) rotate([0, 0, -90]) led_board_assembly();
+
+
+  translate([0, 0, t]) for (x=[-1:1], y=[-1:1]) {
+    if (!(x == 0 && y == 0)) {
+      translate([x * (overall_width / 2 - t * 2 - d/2), y * (overall_height / 2 - t * 2 - d/2), 0]) _screw(2, 4, d, closing_screw_len);
+    }
+  }
+
+  translate([0, 0, -inside_height/2]) {
+    translate([0, overall_height/2 - t - t/2, 0]) rotate([90, 0, 0]) back();
+
+    for (x=[-1,1]) {
+      translate([x * (overall_width/2 - t - t/2), 0, 0]) rotate([90, 0, 90]) side();
+    }
+
+    translate([0, -overall_height/2 + t + t/2, 0]) rotate([90, 0, 0]) front();
   }
 }
 
