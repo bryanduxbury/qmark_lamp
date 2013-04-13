@@ -34,6 +34,12 @@ module _blk() {
   }
 }
 
+module _pcb() {
+  color([0/255, 255/255, 0/255]) {
+    child(0);
+  }
+}
+
 module _rounded_rect(w, l, t, r) {
   linear_extrude(height=t, center=true)
   hull() {
@@ -62,7 +68,7 @@ module pcba() {
 }
 
 module arduino_pcb() {
-  color([0/255, 255/255, 0/255])
+  _pcb()
   linear_extrude(height=pcb_t, center=true)
   mil_to_mm() 
   difference() {
@@ -89,7 +95,7 @@ module arduino() {
 }
 
 module adapter_board() {
-  color([0/255, 255/255, 0/255])
+  _pcb()
   linear_extrude(height=pcb_t, center=true)
   mil_to_mm() 
   difference() {
@@ -105,6 +111,52 @@ module controller_package() {
   arduino();
   translate([25.4/1000*400, 0, 25.4/1000*500 + pcb_t]) adapter_board();
   translate([25, 25, 1/2 * 25.4 + pcb_t / 2 + pcb_t + mm(m2x5_connector[2])/2]) mil_to_mm() _blk() cube(size=m2x5_connector, center=true);
+}
+
+module led_board() {
+  _pcb()
+  linear_extrude(height=pcb_t, center=true)
+  mil_to_mm()
+  difference() {
+    polygon(points=[
+      [-1500, 150],
+      [1500, 150],
+      [1500, -150],
+      [1300, -150],
+      [1200, -250],
+      [950, -650],
+      [-450, -650],
+      [-450, -250],
+      [-1200, -250],
+      [-1300, -150],
+      [-1500, -150]
+      ]);
+    translate([-1350, 0, 0]) circle(r=125/2, $fn=36);
+    translate([1350, 0, 0]) circle(r=125/2, $fn=36);
+  }
+
+}
+
+module led(c) {
+  color(c)
+  render()
+  union() {
+    translate([0, 0, 1]) cylinder(r=11.2/2, h=2, center=true);
+    translate([0, 0, 11.5 - 10/2]) sphere(r=5);
+    translate([0, 0, 6.5/2]) cylinder(r=10/2, h=6.5, center=true);
+  }
+}
+
+module led_board_assembly() {
+  translate([0, 0, -2]) {
+    rotate([0, 180, 0]) {
+      translate([0, 0, pcb_t/2]) led_board();
+      translate([0, mm(-450), pcb_t/2 + mm(m2x5_connector[2]/2)]) mil_to_mm() _blk() cube(size=m2x5_connector, center=true);
+    }
+    for (params = [[1000, [1, 0, 0]], [500, [0, 1, 0]], [0, [0, 0, 1]], [-500, [1, 1, 0]], [-1000, [1, 1, 1]]]) {
+      translate([mm(params[0]), 0, 0]) led(params[1]);
+    }
+  }
 }
 
 module pogo_top() {
@@ -222,10 +274,23 @@ module bed_bottom() {
         translate([xy[0], xy[1], 0]) 
           cylinder(r=125/2, h=1000, center=true);
     }
-    
+
     for (x=[-1,1], y=[-1,1]) {
       translate([x * (frame_width / 2 - frame_thickness / 2), y * (frame_width / 2 - frame_thickness / 2), 0]) 
         cylinder(r=1.6, h=t*2, center=true, $fn=36);
+    }
+
+    for(x=[-1,1], y=[-1:1]) {
+      translate([x * (overall_width - t*3)/2, y * overall_height / 3, 0]) cube(size=[t, tab_width, t*2], center=true);
+    }
+
+    translate([overall_width/2 - t*3 - 150 / 1000 * 25.4, 0, 0]) {
+      for (y=[-2:2]) {
+        translate([0, y * mm(500), 0]) cylinder(r=5.2, h=t*2, center=true, $fn=72);
+      }
+      for (y=[-1,1]) {
+        translate([0, y * mm(1350), 0]) cylinder(r=mm(125)/2, h=t*2, center=true, $fn=36);
+      }
     }
   }
 }
@@ -268,6 +333,8 @@ module assembled() {
   translate([-overall_width / 2 + t * 3, overall_height/2 - t * 2, -inside_height + pcb_t/2 + washer_t]) rotate([0, 0, -90]) controller_package();
   translate([0, 0, -inside_height - t/2]) base();
   
+  translate([overall_width/2 - t * 3 - 150/1000 * 25.4, 0, 0]) rotate([0, 0, -90]) led_board_assembly();
+
   
   translate([0, 0, -inside_height/2]) {
     translate([0, overall_height/2 - t - t/2, 0]) rotate([90, 0, 0]) back();
@@ -278,6 +345,8 @@ module assembled() {
 
     translate([0, -overall_height/2 + t + t/2, 0]) rotate([90, 0, 0]) front();
   }
+  
+
 }
 
 module back() {
@@ -336,4 +405,3 @@ module side() {
 }
 
 assembled();
-
