@@ -1,8 +1,7 @@
 // TODOs
-// - add hole for go switch
-// - add hole for reset enable switch
 
-t = 3; // acrylic
+// t = 3; // acrylic
+t = 0.177 * 25.4; // 3/16" acrylic (adam's recommendation)
 
 d = 1/8 * 25.4; // #4-40 screws
 
@@ -14,7 +13,7 @@ pogo_pin_d = 1.01;
 pogo_pin_static_len = 25;
 pogo_pin_dyn_len = 6.3;
 pogo_pin_head_len = 2;
-pogo_pin_exposed_shaft_len=t;
+pogo_pin_exposed_shaft_len=t - 1;
 
 overall_width = 7 * 25.4;
 overall_height = 5*25.4;
@@ -61,6 +60,29 @@ module _rounded_rect(w, l, t, r) {
       translate([x * (w / 2 - r), y * (l / 2 - r), 0]) 
         circle(r=r, center=true, $fn=36);
     }
+  }
+}
+
+module toggle_button() {
+  color([192/255, 32/255, 32/255])
+  render()
+  mil_to_mm()
+  union() {
+    translate([0, 0, 308 + 200/2]) cube(size=[403, 403, 200], center=true);
+    translate([0, 0, 308/2]) cube(size=[587, 587, 308], center=true);
+    translate([386/2, 0, -20]) cube(size=[(429-386)*2, 58, 40], center=true);
+    translate([0, 0, (877-508)/-2]) cylinder(r=386/2, h=877-508, center=true); 
+    translate([0, 0, -(1088 - 508) + (1088-877)/2]) cylinder(r=335/2, h=1088-877, center=true); 
+  }
+}
+
+module small_momentary() {
+  color([192/255, 32/255, 32/255])
+  render()
+  mil_to_mm()
+  union() {
+    translate([0, 0, 306/2]) cylinder(r=267/2, h=306, center=true);
+    translate([0, 0, -610/2]) cylinder(r=397/2, h=610, center=true);
   }
 }
 
@@ -325,6 +347,9 @@ module top() {
         translate([0, y * mm(1350), 0]) cylinder(r=mm(125)/2, h=t*2, center=true, $fn=36);
       }
     }
+
+    // "go" button
+    translate([overall_width/2 - t * 2 - d - 2 - 5 - 10, -(overall_height/2 - t*2 - 5 - mm(397)/2), 0]) cylinder(r=mm(300)/2, h=t*2, center=true, $fn=72);
   }
 }
 
@@ -363,8 +388,7 @@ module bottom() {
   }
 }
 
-
-module back() {
+module front_back_base() {
   difference() {
     union() {
       cube(size=[overall_width, inside_height, t], center=true);
@@ -372,11 +396,21 @@ module back() {
         translate([x * (overall_width/5), y * inside_height / 2, 0]) cube(size=[tab_width, t*2, t], center=true);
       }
     }
-    
+
     for(x=[-1,1], y=[-1,1]) {
       translate([x * (overall_width - t*3)/2, y * inside_height / 4, 0]) cube(size=[t, tab_width, t*2], center=true);
     }
 
+    for (x=[-1,1]) {
+      translate([x * (overall_width / 2 - t - t / 2), 0, 0]) cylinder(r=d/2+0.1, h=t*2, center=true, $fn=36);
+    }
+  }
+}
+
+
+module back() {
+  difference() {
+    front_back_base();
     translate([0, -inside_height/2 + washer_t + pcb_t + 450/1000 * 25.4 / 2, 0]) {
       translate([-overall_width / 2 + t*2 + d + 2 + 0.1 * 25.4 + 350/1000*25.4/2, 0, 0]) 
         cube(size=[375/1000 * 25.4, 475/1000 * 25.4, t*2], center=true);
@@ -384,37 +418,42 @@ module back() {
       translate([-overall_width / 2 + t*2 + d + 2 + 1275/1000 * 25.4 + 450/1000*25.4/2, 0, 0]) 
         cube(size=[475/1000 * 25.4, 475/1000 * 25.4, t*2], center=true);
     }
+
+    // hole for the prog-enable switch
+    translate([-mm(587), 0, 0]) {
+      cylinder(r=mm(386)/2+0.5, h=t*2, center=true, $fn=72);
+      translate([0, mm(386)/2, 0]) cube(size=[mm(58), mm(429-386)*2, t*2], center=true);
+    }
   }
 }
 
 module front() {
-  color([128/255, 128/255, 128/255, 0.5])
+  color([128/255, 128/255, 128/255])
   render()
   difference() {
-    union() {
-      cube(size=[overall_width, inside_height, t], center=true);
-      for(x=[-2:2], y=[-1,1]) {
-        translate([x * (overall_width/5), y * inside_height / 2, 0]) cube(size=[tab_width, t*2, t], center=true);
-      }
-    }
-
-    for(x=[-1,1], y=[-1,1]) {
-      translate([x * (overall_width - t*3)/2, y * inside_height / 4, 0]) cube(size=[t, tab_width, t*2], center=true);
-    }
+    front_back_base();
   }
 }
 
 module side() {
   color([32/255, 0/255, 32/255])
   render()
-  union() {
-    cube(size=[overall_height - t*4, inside_height, t], center=true);
-    for(x=[-1:1], y=[-1,1]) {
-      translate([x * (overall_height/3), y * inside_height / 2, 0]) cube(size=[tab_width, t*2, t], center=true);
-    }
+  difference() {
+    union() {
+      cube(size=[overall_height - t*4, inside_height, t], center=true);
+      for(x=[-1:1], y=[-1,1]) {
+        translate([x * (overall_height/3), y * inside_height / 2, 0]) cube(size=[tab_width, t*2, t], center=true);
+      }
 
-    for(x=[-1,1], y=[-1,1]) {
-      translate([x * (overall_height - t*4)/2, y * inside_height / 4, 0]) cube(size=[t*2, tab_width, t], center=true);
+      for(x=[-1,1], y=[-1,1]) {
+        translate([x * (overall_height - t*4)/2, y * inside_height / 4, 0]) cube(size=[t*2, tab_width, t], center=true);
+      }
+    }
+    for(x=[-1,1]) {
+      translate([x * (overall_height / 2 - t*2), 0, 0]) {
+        cube(size=[20, d, t*2], center=true);
+      }
+      translate([x * (overall_height / 2 - t*2 - 5), 0, 0]) cube(size=[3, d*2, t*2], center=true);
     }
   }
 }
@@ -428,7 +467,8 @@ module assembled() {
   translate([0, 0, -inside_height - t/2]) bottom();
   
   translate([overall_width/2 - t * 2 - d - 2 - 5, 0, 0]) rotate([0, 0, -90]) led_board_assembly();
-
+  // "go" button
+  translate([overall_width/2 - t * 2 - d - 2 - 5 - 10, -(overall_height/2 - t*2 - 5 - mm(397)/2), 0]) small_momentary();
 
   translate([0, 0, t]) for (x=[-1:1], y=[-1:1]) {
     if (!(x == 0 && y == 0)) {
@@ -443,8 +483,13 @@ module assembled() {
       translate([x * (overall_width/2 - t - t/2), 0, 0]) rotate([90, 0, 90]) side();
     }
 
-    translate([0, -overall_height/2 + t + t/2, 0]) rotate([90, 0, 0]) front();
+    translate([0, -overall_height/2 + t + t/2, 0]) rotate([90, 0, 0]) %front();
   }
+  
+  // "prog-enable" switch
+  translate([-mm(587), overall_height/2 - t, inside_height/-2]) rotate([-90, 0, 0]) toggle_button();
+
+
 }
 
 assembled();
