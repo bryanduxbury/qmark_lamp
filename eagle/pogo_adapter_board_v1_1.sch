@@ -985,6 +985,86 @@
 <text x="20.828" y="49.911" size="1.016" layer="21" font="vector" rot="R270">SDA</text>
 <text x="30.988" y="3.7999" size="1.016" layer="21" font="vector" rot="R90">IOr</text>
 </package>
+<package name="ARDUINOR3-MINSHIELD">
+<wire x1="0" y1="0" x2="54.61" y2="0" width="0" layer="22"/>
+<wire x1="54.61" y1="0" x2="54.61" y2="2.54" width="0" layer="22"/>
+<wire x1="54.61" y1="2.54" x2="57.15" y2="5.08" width="0" layer="22"/>
+<wire x1="57.15" y1="5.08" x2="57.15" y2="37.846" width="0" layer="22"/>
+<wire x1="57.15" y1="37.846" x2="54.61" y2="40.386" width="0" layer="22"/>
+<wire x1="54.61" y1="40.386" x2="54.61" y2="51.816" width="0" layer="22"/>
+<wire x1="54.61" y1="51.816" x2="53.086" y2="53.34" width="0" layer="22"/>
+<wire x1="53.086" y1="53.34" x2="0" y2="53.34" width="0" layer="22"/>
+<wire x1="0" y1="53.34" x2="0" y2="0" width="0" layer="22"/>
+<circle x="3.81" y="50.8" radius="1.796" width="0.127" layer="51"/>
+<circle x="2.54" y="2.54" radius="1.796" width="0.127" layer="51"/>
+<circle x="54.61" y="35.56" radius="1.796" width="0.127" layer="51"/>
+<circle x="54.61" y="7.62" radius="1.796" width="0.127" layer="51"/>
+<pad name="D4" x="41.91" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A0" x="39.37" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D3" x="44.45" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D2" x="46.99" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D1" x="49.53" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D0" x="52.07" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D5" x="39.37" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D6" x="36.83" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D7" x="34.29" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D8" x="30.226" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D9" x="27.686" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D10" x="25.146" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D11" x="22.606" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D12" x="20.066" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="D13" x="17.526" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="GND" x="14.986" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="AREF" x="12.446" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A1" x="41.91" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A2" x="44.45" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A3" x="46.99" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A4" x="49.53" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="A5" x="52.07" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="VIN" x="34.29" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="GND1" x="31.75" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="GND2" x="29.21" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="5V" x="26.67" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="3V" x="24.13" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="RESET" x="21.59" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="SDA" x="9.906" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="SCL" x="7.366" y="50.8" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="IOREF" x="19.05" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<pad name="RESERVED" x="16.51" y="2.54" drill="1" diameter="1.6764" shape="octagon"/>
+<text x="22.098" y="3.7999" size="1.016" layer="21" font="vector" rot="R90">RST</text>
+<text x="23.3223" y="3.81" size="1.016" layer="21" font="vector">3v</text>
+<text x="26.1163" y="3.81" size="1.016" layer="21" font="vector">5v</text>
+<text x="29.3471" y="3.81" size="1.016" layer="21" font="vector">Gnd</text>
+<text x="33.3553" y="3.81" size="1.016" layer="21" font="vector">Vin</text>
+<text x="42.6821" y="0.4623" size="1.016" layer="21" font="vector">Analog In</text>
+<text x="38.989" y="3.81" size="1.016" layer="21" font="vector">0</text>
+<text x="41.529" y="3.81" size="1.016" layer="21" font="vector">1</text>
+<text x="44.069" y="3.81" size="1.016" layer="21" font="vector">2</text>
+<text x="46.609" y="3.81" size="1.016" layer="21" font="vector">3</text>
+<text x="49.149" y="3.81" size="1.016" layer="21" font="vector">4</text>
+<text x="51.689" y="3.81" size="1.016" layer="21" font="vector">5</text>
+<text x="11.938" y="49.911" size="1.016" layer="21" font="vector" rot="R270">ARef</text>
+<text x="14.478" y="49.784" size="1.016" layer="21" font="vector" rot="R270">gnd</text>
+<text x="18.669" y="49.53" size="1.016" layer="21" font="vector" rot="R180">13</text>
+<text x="21.209" y="49.53" size="1.016" layer="21" font="vector" rot="R180">12</text>
+<text x="23.749" y="49.53" size="1.016" layer="21" font="vector" rot="R180">11</text>
+<text x="26.289" y="49.53" size="1.016" layer="21" font="vector" rot="R180">10</text>
+<text x="28.321" y="49.53" size="1.016" layer="21" font="vector" rot="R180">9</text>
+<text x="30.861" y="49.53" size="1.016" layer="21" font="vector" rot="R180">8</text>
+<text x="34.925" y="49.53" size="1.016" layer="21" font="vector" rot="R180">7</text>
+<text x="37.465" y="49.53" size="1.016" layer="21" font="vector" rot="R180">6</text>
+<text x="40.005" y="49.53" size="1.016" layer="21" font="vector" rot="R180">5</text>
+<text x="42.545" y="49.53" size="1.016" layer="21" font="vector" rot="R180">4</text>
+<text x="45.085" y="49.53" size="1.016" layer="21" font="vector" rot="R180">3</text>
+<text x="47.625" y="49.53" size="1.016" layer="21" font="vector" rot="R180">2</text>
+<text x="50.165" y="49.53" size="1.016" layer="21" font="vector" rot="R180">1</text>
+<text x="52.705" y="49.53" size="1.016" layer="21" font="vector" rot="R180">0</text>
+<text x="20.193" y="52.07" size="1.016" layer="21" font="vector">Digital I/O</text>
+<text x="39.497" y="52.07" size="1.016" layer="21" font="vector">Digital I/O</text>
+<text x="6.858" y="49.911" size="1.016" layer="21" font="vector" rot="R270">SCL</text>
+<text x="9.398" y="49.911" size="1.016" layer="21" font="vector" rot="R270">SDA</text>
+<text x="19.558" y="3.7999" size="1.016" layer="21" font="vector" rot="R90">IOr</text>
+</package>
 </packages>
 <symbols>
 <symbol name="ARDUINOR3">
@@ -1086,6 +1166,45 @@
 </technologies>
 </device>
 <device name="-BPLACE" package="ARDUINOR3-BPLACE">
+<connects>
+<connect gate="G$1" pin="/RESET" pad="RESET"/>
+<connect gate="G$1" pin="3V" pad="3V"/>
+<connect gate="G$1" pin="5V" pad="5V"/>
+<connect gate="G$1" pin="A0" pad="A0"/>
+<connect gate="G$1" pin="A1" pad="A1"/>
+<connect gate="G$1" pin="A2" pad="A2"/>
+<connect gate="G$1" pin="A3" pad="A3"/>
+<connect gate="G$1" pin="A4/SDA" pad="A4"/>
+<connect gate="G$1" pin="A5/SCL" pad="A5"/>
+<connect gate="G$1" pin="AREF" pad="AREF"/>
+<connect gate="G$1" pin="D0" pad="D0"/>
+<connect gate="G$1" pin="D1" pad="D1"/>
+<connect gate="G$1" pin="D10" pad="D10"/>
+<connect gate="G$1" pin="D11" pad="D11"/>
+<connect gate="G$1" pin="D12" pad="D12"/>
+<connect gate="G$1" pin="D13" pad="D13"/>
+<connect gate="G$1" pin="D2" pad="D2"/>
+<connect gate="G$1" pin="D3" pad="D3"/>
+<connect gate="G$1" pin="D4" pad="D4"/>
+<connect gate="G$1" pin="D5" pad="D5"/>
+<connect gate="G$1" pin="D6" pad="D6"/>
+<connect gate="G$1" pin="D7" pad="D7"/>
+<connect gate="G$1" pin="D8" pad="D8"/>
+<connect gate="G$1" pin="D9" pad="D9"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GND1" pad="GND1"/>
+<connect gate="G$1" pin="GND2" pad="GND2"/>
+<connect gate="G$1" pin="IOREF" pad="IOREF"/>
+<connect gate="G$1" pin="RESERVED" pad="RESERVED"/>
+<connect gate="G$1" pin="SCL" pad="SCL"/>
+<connect gate="G$1" pin="SDA" pad="SDA"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="ARDUINOR3-MINSHIELD">
 <connects>
 <connect gate="G$1" pin="/RESET" pad="RESET"/>
 <connect gate="G$1" pin="3V" pad="3V"/>
@@ -7524,7 +7643,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="SPKR_TEST" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
 <part name="SEND_TEST" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
 <part name="CONTACT" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="U1" library="adafruit" deviceset="ARDUINOR3" device="-BPLACE" value="ARDUINOR3-BPLACE"/>
+<part name="U1" library="adafruit" deviceset="ARDUINOR3" device="" value="ARDUINOR3"/>
 <part name="PROGENABLE" library="SparkFun" deviceset="M02" device="-JST-2-PTH-NO_SILK"/>
 <part name="GO" library="SparkFun" deviceset="M02" device="-JST-2-PTH-NO_SILK"/>
 <part name="INDICATORS2" library="SparkFun" deviceset="M05X2" device="SHD"/>
