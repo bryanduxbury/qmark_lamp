@@ -456,7 +456,7 @@ module side() {
     }
     for(x=[-1,1]) {
       translate([x * (overall_height / 2 - t*2), 0, 0]) {
-        cube(size=[20, d, t*2], center=true);
+        cube(size=[25.4, d, t*2], center=true);
       }
       translate([x * (overall_height / 2 - t*2 - 8), 0, 0]) cube(size=[3, d*2, t*2], center=true);
     }
