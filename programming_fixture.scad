@@ -372,7 +372,7 @@ module board_frame() {
     }
 
     linear_extrude(height=t*2, center=true) {
-      mil_to_mm() polygon(points=[[-1525, -1525], [-1525, 1525], [1475, 1525], [1525, 1425], [1525, -1525]]);
+      mil_to_mm() polygon(points=[[-1525, -1525], [-1525, 1525], [1425, 1525], [1525, 1325], [1525, -1525]]);
     }
   }
 }
