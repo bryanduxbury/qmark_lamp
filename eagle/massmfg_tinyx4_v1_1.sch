@@ -4135,6 +4135,14 @@ Source: www.kingbright.com</description>
 <text x="-1.016" y="-1.143" size="0.0254" layer="27">&gt;VALUE</text>
 <text x="0" y="-2.54" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
 </package>
+<package name="P1-06">
+<circle x="0" y="0" radius="0.381" width="0.1524" layer="51"/>
+<pad name="TP" x="0" y="0" drill="0.6604" diameter="2.159" shape="octagon"/>
+<text x="-1.016" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="-1.27" y="-2.54" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
+<rectangle x1="-0.3302" y1="-0.3302" x2="0.3302" y2="0.3302" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PS">
@@ -4550,6 +4558,14 @@ Source: www.kingbright.com</description>
 </technology>
 </technologies>
 </device>
+<device name="" package="P1-06">
+<connects>
+<connect gate="G$1" pin="TP" pad="TP"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 </devicesets>
@@ -4584,17 +4600,17 @@ Source: www.kingbright.com</description>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
 <part name="GND3" library="supply1" deviceset="GNDA" device=""/>
 <part name="GND4" library="supply1" deviceset="GNDA" device=""/>
-<part name="RESET" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="MOSI" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="MISO" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="SCL" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
+<part name="RESET" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="MOSI" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="MISO" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="SCL" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="P+4" library="supply1" deviceset="+5V" device=""/>
 <part name="R7" library="resistor" deviceset="R-US_" device="M1206" value="47"/>
 <part name="U$1" library="smd_parts" deviceset="AWSCR-MG" device=""/>
 <part name="P+5" library="supply1" deviceset="+5V" device=""/>
-<part name="V+" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
+<part name="V+" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="R8" library="resistor" deviceset="R-US_" device="M1206" value="10M"/>
-<part name="GND" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
+<part name="GND" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="GND5" library="supply1" deviceset="GNDA" device=""/>
 <part name="P+6" library="supply1" deviceset="+5V" device=""/>
 <part name="GND7" library="supply1" deviceset="GNDA" device=""/>
@@ -4602,10 +4618,10 @@ Source: www.kingbright.com</description>
 <part name="U$5" library="smd_parts" deviceset="CONNECTION_POINT" device=""/>
 <part name="SPEAKER_PLUS" library="smd_parts" deviceset="CONNECTION_POINT" device=""/>
 <part name="SPKR_MINUS" library="smd_parts" deviceset="CONNECTION_POINT" device=""/>
-<part name="LIGHT_TEST" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="SPKR_TEST" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="SEND_TEST" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
-<part name="CONTACT" library="testpad" deviceset="PTR1" device="PAD1-13" value="PTR1PAD1-13"/>
+<part name="LIGHT_TEST" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="SPKR_TEST" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="SEND_TEST" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
+<part name="CONTACT" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="GND6" library="supply1" deviceset="GNDA" device=""/>
 </parts>
 <sheets>

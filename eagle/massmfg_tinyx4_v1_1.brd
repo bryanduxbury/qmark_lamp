@@ -38,7 +38,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -116,8 +116,8 @@
 <text x="54.0004" y="64.8716" size="1.778" layer="25" rot="R270">SPEAKER</text>
 <text x="12.7" y="43.815" size="1.778" layer="25">SUPPLY</text>
 <text x="33.4518" y="19.4564" size="1.778" layer="25">XTAL</text>
-<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.1</text>
-<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 4/09/2013</text>
+<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.1.1</text>
+<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 4/25/2013</text>
 </plain>
 <libraries>
 <library name="avr-5">
@@ -242,10 +242,9 @@ MELF 0.25 W</description>
 </library>
 <library name="testpad">
 <packages>
-<package name="P1-13">
-<description>&lt;b&gt;TEST PAD&lt;/b&gt;</description>
-<circle x="0" y="0" radius="0.762" width="0.1524" layer="51"/>
-<pad name="TP" x="0" y="0" drill="1.3208" diameter="2.159" shape="octagon"/>
+<package name="P1-06">
+<circle x="0" y="0" radius="0.381" width="0.1524" layer="51"/>
+<pad name="TP" x="0" y="0" drill="0.6604" diameter="2.159" shape="octagon"/>
 <text x="-1.016" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
 <text x="-1.27" y="-2.54" size="1" layer="37">&gt;TP_SIGNAL_NAME</text>
@@ -464,67 +463,56 @@ design rules under a new name.</description>
 <element name="LED3" library="smd_parts" package="OPTEK-DURIS5" value="" x="38.1" y="7.62"/>
 <element name="R6" library="resistor" package="M1206" value="15" x="43.18" y="68.58" rot="R270"/>
 <element name="LED4" library="smd_parts" package="OPTEK-DURIS5" value="" x="38.1" y="68.58"/>
-<element name="RESET" library="testpad" package="P1-13" value="PTR1PAD1-13" x="38.1" y="30.48" smashed="yes">
+<element name="RESET" library="testpad" package="P1-06" value="PTR1" x="38.1" y="30.48" smashed="yes">
 <attribute name="NAME" x="39.2082" y="27.7962" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="37.338" y="29.464" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="38.1" y="27.94" size="1" layer="37"/>
 </element>
-<element name="MOSI" library="testpad" package="P1-13" value="PTR1PAD1-13" x="45.72" y="35.56" smashed="yes">
+<element name="MOSI" library="testpad" package="P1-06" value="PTR1" x="45.72" y="35.56" smashed="yes">
 <attribute name="NAME" x="47.26" y="35.086" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="44.958" y="34.544" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="33.02" size="1" layer="37"/>
 </element>
-<element name="MISO" library="testpad" package="P1-13" value="PTR1PAD1-13" x="45.72" y="40.64" smashed="yes">
+<element name="MISO" library="testpad" package="P1-06" value="PTR1" x="45.72" y="40.64" smashed="yes">
 <attribute name="NAME" x="47.26" y="40.166" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="44.958" y="39.624" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="38.1" size="1" layer="37"/>
 </element>
-<element name="SCL" library="testpad" package="P1-13" value="PTR1PAD1-13" x="45.72" y="45.72" smashed="yes">
+<element name="SCL" library="testpad" package="P1-06" value="PTR1" x="45.72" y="45.72" smashed="yes">
 <attribute name="NAME" x="47.26" y="45.246" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="44.958" y="44.704" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="43.18" size="1" layer="37"/>
 </element>
 <element name="R7" library="resistor" package="M1206" value="47" x="52.0954" y="67.691" smashed="yes" rot="R90">
 <attribute name="NAME" x="48.2854" y="66.421" size="1.27" layer="25" rot="R90"/>
 <attribute name="VALUE" x="50.0634" y="66.421" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="U$1" library="smd_parts" package="AWSCR-MG" value="AWSCR-MG" x="36" y="24"/>
-<element name="V+" library="testpad" package="P1-13" value="PTR1PAD1-13" x="30.48" y="30.48" smashed="yes">
+<element name="V+" library="testpad" package="P1-06" value="PTR1" x="30.48" y="30.48" smashed="yes">
 <attribute name="NAME" x="31.7406" y="28.1772" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="29.718" y="29.464" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="30.48" y="27.94" size="1" layer="37"/>
 </element>
 <element name="R8" library="resistor" package="M1206" value="10M" x="46.99" y="25.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="48.26" y="30.734" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="48.26" y="28.956" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="GND" library="testpad" package="P1-13" value="PTR1PAD1-13" x="30.48" y="45.72" smashed="yes">
+<element name="GND" library="testpad" package="P1-06" value="PTR1" x="30.48" y="45.72" smashed="yes">
 <attribute name="NAME" x="28.464" y="46.77" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="29.718" y="44.704" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="30.48" y="43.18" size="1" layer="37"/>
 </element>
 <element name="U$3" library="smd_parts" package="10X3_CONNECTION_POINT" value="CONNECTION_POINT" x="17.78" y="34.29" rot="R90"/>
 <element name="U$5" library="smd_parts" package="10X3_CONNECTION_POINT" value="CONNECTION_POINT" x="17.78" y="41.91" rot="R90"/>
 <element name="SPEAKER_PLUS" library="smd_parts" package="10X3_CONNECTION_POINT" value="CONNECTION_POINT" x="52.07" y="59.69"/>
 <element name="SPKR_MINUS" library="smd_parts" package="10X3_CONNECTION_POINT" value="CONNECTION_POINT" x="45.72" y="59.69"/>
-<element name="LIGHT_TEST" library="testpad" package="P1-13" value="PTR1PAD1-13" x="35.56" y="45.72" smashed="yes">
+<element name="LIGHT_TEST" library="testpad" package="P1-06" value="PTR1" x="35.56" y="45.72" smashed="yes">
 <attribute name="NAME" x="29.3784" y="41.1058" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="34.798" y="44.704" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="35.56" y="43.18" size="1" layer="37"/>
 </element>
-<element name="SPKR_TEST" library="testpad" package="P1-13" value="PTR1PAD1-13" x="40.64" y="45.72" smashed="yes">
+<element name="SPKR_TEST" library="testpad" package="P1-06" value="PTR1" x="40.64" y="45.72" smashed="yes">
 <attribute name="NAME" x="36.9139" y="43.5257" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="39.878" y="44.704" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="40.64" y="43.18" size="1" layer="37"/>
 </element>
-<element name="SEND_TEST" library="testpad" package="P1-13" value="PTR1PAD1-13" x="45.72" y="30.48" smashed="yes">
+<element name="SEND_TEST" library="testpad" package="P1-06" value="PTR1" x="45.72" y="30.48" smashed="yes">
 <attribute name="NAME" x="46.8028" y="30.9204" size="1.27" layer="25" rot="R45"/>
 <attribute name="VALUE" x="44.958" y="29.464" size="0.0254" layer="27"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="45.72" y="27.94" size="1" layer="37"/>
 </element>
-<element name="CONTACT" library="testpad" package="P1-13" value="PTR1PAD1-13" x="30.48" y="38.1">
-<attribute name="TP_SIGNAL_NAME" value="" x="30.48" y="38.1" size="1.778" layer="27" display="off"/>
-</element>
+<element name="CONTACT" library="testpad" package="P1-06" value="PTR1" x="30.48" y="38.1"/>
 </elements>
 <signals>
 <signal name="N$5">
