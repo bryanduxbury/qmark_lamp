@@ -372,7 +372,7 @@ module board_frame() {
     }
 
     linear_extrude(height=t*2, center=true) {
-      mil_to_mm() polygon(points=[[-1525, -1525], [-1525, 1525], [1425, 1525], [1525, 1325], [1525, -1525]]);
+      mil_to_mm() polygon(points=[[-1500 - 10, -1500 - 10], [-1500 - 10, 1500 + 10], [1400 + 10, 1500 + 10], [1500 + 10, 1300 + 10], [1500 + 10, -1500 - 10]]);
     }
   }
 }
@@ -418,10 +418,10 @@ module back() {
     // translate([0, inside_height/2 + washer_t + pcb_t + 450/1000 * 25.4 / 2, 0]) {
     translate([0, -inside_height/2 + washer_t + pcb_t + 450/1000 * 25.4 / 2, 0]) {
       translate([-overall_width / 2 + t*2 + d + 2 + 2 + 0.1 * 25.4 + 350/1000*25.4/2, 0, 0]) 
-        cube(size=[375/1000 * 25.4, 475/1000 * 25.4 + 2, t*2], center=true);
+        cube(size=[400/1000 * 25.4, 475/1000 * 25.4 + 2, t*2], center=true);
 
       translate([-overall_width / 2 + t*2 + d + 2 + 2 + 1275/1000 * 25.4 + 450/1000*25.4/2, 0, 0]) 
-        cube(size=[475/1000 * 25.4, 475/1000 * 25.4 + 2, t*2], center=true);
+        cube(size=[500/1000 * 25.4, 475/1000 * 25.4 + 2, t*2], center=true);
     }
 
     // hole for the prog-enable switch
@@ -495,13 +495,13 @@ module assembled() {
   translate([-mm(587), overall_height/2 - t, - 2 - mm(587)/2]) rotate([-90, 0, 0]) toggle_button();
 }
 
-assembled();
+// assembled();
 
-// ! projection(cut=true) {
-//   // top();
-//   // bottom();
-//   // side();
-//   // front();
-//   // back();
-//   board_frame();
-// }
+! projection(cut=true) {
+  // top();
+  // bottom();
+  // side();
+  // front();
+  // back();
+  board_frame();
+}
