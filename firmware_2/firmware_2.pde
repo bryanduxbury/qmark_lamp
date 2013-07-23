@@ -22,13 +22,10 @@ int oneup_sound_note_durations[] = {8, 8, 8, 8, 8, 8};
 CapSense cs_4_2 = CapSense(CAP_SENSOR_SEND_PIN, CAP_SENSOR_RECEIVE_PIN);
 
 void setup() {
-  pinMode(10, INPUT);
-  pinMode(LIGHT_PIN, OUTPUT);
-  digitalWrite(LIGHT_PIN, HIGH);
-  delay(1000);  
   digitalWrite(LIGHT_PIN, LOW);
-  
-//  tone(SPEAKER_PIN, NOTE_G7);
+  pinMode(LIGHT_PIN, OUTPUT);
+  digitalWrite(SPEAKER_PIN, LOW);
+  pinMode(SPEAKER_PIN, OUTPUT);
 }
 
 void playSound(int speaker_pin, int num_notes, int notes[], int durations[]) {
@@ -55,14 +52,14 @@ boolean checkSensor() {
 //  }
 //  return false;
   int readValue = cs_4_2.capSense(30);
-  if (readValue == -2) {
-    for (int i = 0; i < 2; i++) {
-      digitalWrite(LIGHT_PIN, HIGH);
-      delay(500);
-      digitalWrite(LIGHT_PIN, LOW);
-      delay(500);
-    }
-  }
+//  if (readValue == -2) {
+//    for (int i = 0; i < 2; i++) {
+//      digitalWrite(LIGHT_PIN, HIGH);
+//      delay(500);
+//      digitalWrite(LIGHT_PIN, LOW);
+//      delay(500);
+//    }
+//  }
   return readValue > threshold;
 }
 
@@ -98,5 +95,5 @@ void loop() {
       delay(25);
     }
   }
-  delay(25);
+//  delay(25);
 }
