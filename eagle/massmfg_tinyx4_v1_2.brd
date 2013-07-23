@@ -116,8 +116,8 @@
 <text x="54.0004" y="64.8716" size="1.778" layer="25" rot="R270">SPEAKER</text>
 <text x="12.7" y="43.815" size="1.778" layer="25">SUPPLY</text>
 <text x="33.4518" y="19.4564" size="1.778" layer="25">XTAL</text>
-<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.1.1</text>
-<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 4/25/2013</text>
+<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.2</text>
+<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 7/23/2013</text>
 </plain>
 <libraries>
 <library name="avr-5">
