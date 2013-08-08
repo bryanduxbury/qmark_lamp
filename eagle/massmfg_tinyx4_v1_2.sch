@@ -3299,8 +3299,8 @@ Source: http://www.kingbright.com/manager/upload/pdf/KA-3528ASYC(Ver1189474662.1
 </polygon>
 </package>
 <package name="OPTEK-DURIS5">
-<smd name="ANODE" x="0" y="-2.4" dx="2.5" dy="1.2" layer="1"/>
-<smd name="CATHODE" x="0" y="2.4" dx="2.5" dy="1.2" layer="1"/>
+<smd name="ANODE" x="0" y="-2.65" dx="2.5" dy="1.7" layer="1"/>
+<smd name="CATHODE" x="0" y="2.65" dx="2.5" dy="1.7" layer="1"/>
 <smd name="P$5" x="0" y="0" dx="3" dy="1.8" layer="1"/>
 <text x="-1.7" y="-2.8" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <polygon width="0.127" layer="21">
@@ -3328,8 +3328,8 @@ Source: http://www.kingbright.com/manager/upload/pdf/KA-3528ASYC(Ver1189474662.1
 </package>
 <package name="AWSCR-MG">
 <smd name="GND" x="0" y="0" dx="1.5" dy="4" layer="1"/>
-<smd name="IN" x="-2.5" y="0" dx="1.7" dy="4" layer="1"/>
-<smd name="OUT" x="2.5" y="0" dx="1.7" dy="4" layer="1"/>
+<smd name="IN" x="-2.75" y="0" dx="2.2" dy="4" layer="1"/>
+<smd name="OUT" x="2.75" y="0" dx="2.2" dy="4" layer="1"/>
 </package>
 <package name="10X3_CONNECTION_POINT">
 <smd name="CONNECTION_POINT" x="0" y="0" dx="3" dy="10" layer="1"/>
@@ -7946,7 +7946,6 @@ Source: AVX .. aphvc.pdf</description>
 <part name="MISO" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="SCL" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
 <part name="P+4" library="supply1" deviceset="+5V" device=""/>
-<part name="R7" library="resistor" deviceset="R-US_" device="M1206" value="47"/>
 <part name="U$1" library="smd_parts" deviceset="AWSCR-MG" device=""/>
 <part name="P+5" library="supply1" deviceset="+5V" device=""/>
 <part name="V+" library="testpad" deviceset="PTR1" device="" value="PTR1"/>
@@ -7966,7 +7965,7 @@ Source: AVX .. aphvc.pdf</description>
 <part name="GND6" library="supply1" deviceset="GNDA" device=""/>
 <part name="GND8" library="supply1" deviceset="GNDA" device=""/>
 <part name="P+7" library="supply1" deviceset="+5V" device=""/>
-<part name="C1" library="rcl" deviceset="C-US" device="C1206"/>
+<part name="C1" library="rcl" deviceset="C-US" device="C0603"/>
 </parts>
 <sheets>
 <sheet>
@@ -7997,8 +7996,7 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="MOSI" gate="G$1" x="71.12" y="45.72" rot="R90"/>
 <instance part="MISO" gate="G$1" x="71.12" y="43.18" rot="R90"/>
 <instance part="SCL" gate="G$1" x="71.12" y="40.64" rot="R90"/>
-<instance part="P+4" gate="1" x="160.02" y="104.14"/>
-<instance part="R7" gate="G$1" x="160.02" y="93.98" rot="R90"/>
+<instance part="P+4" gate="1" x="160.02" y="91.44"/>
 <instance part="U$1" gate="G$1" x="86.36" y="53.34"/>
 <instance part="P+5" gate="1" x="101.6" y="91.44"/>
 <instance part="V+" gate="G$1" x="106.68" y="86.36" rot="R90"/>
@@ -8120,11 +8118,6 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="LED2" gate="G$1" pin="A"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="101.6" x2="160.02" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="P+4" gate="1" pin="+5V"/>
-<pinref part="R7" gate="G$1" pin="2"/>
-</segment>
-<segment>
 <wire x1="101.6" y1="88.9" x2="101.6" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="86.36" x2="104.14" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="P+5" gate="1" pin="+5V"/>
@@ -8140,6 +8133,12 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="P+7" gate="1" pin="+5V"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="83.82" y1="99.06" x2="83.82" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<wire x1="160.02" y1="88.9" x2="160.02" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="86.36" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="SPEAKER_PLUS" gate="G$1" pin="CONN"/>
+<pinref part="P+4" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -8203,14 +8202,6 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="68.58" y1="40.64" x2="66.04" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="1" pin="(PCINT4/T1/SCL/USCK/ADC4)PA4"/>
 <pinref part="SCL" gate="G$1" pin="TP"/>
-</segment>
-</net>
-<net name="N$17" class="0">
-<segment>
-<wire x1="160.02" y1="88.9" x2="160.02" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="86.36" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="R7" gate="G$1" pin="1"/>
-<pinref part="SPEAKER_PLUS" gate="G$1" pin="CONN"/>
 </segment>
 </net>
 <net name="N$18" class="0">
