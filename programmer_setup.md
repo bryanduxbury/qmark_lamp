@@ -1,8 +1,8 @@
-# Basic configuration # 
+# Basic configuration #
 
 ## Download Arduino 0023 ##
 
-Go (here)[http://arduino.cc/en/Main/Software] and download version 0023.
+Go [here](http://arduino.cc/en/Main/Software) and download version 0023.
 
 ## Download and install the tiny core ##
 
@@ -17,11 +17,6 @@ We use a custom board configuration. Add the following to your boards.txt (which
 >attiny44at8.upload.using=arduino:arduinoisp
 >
 >attiny44at8.upload.maximum_size=4096
->
->\# Default clock (slowly rising power; long delay to clock; 8 MHz internal)
->\# Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms; [CKSEL=0010 SUT=10]; default value
->\# Brown-out detection disabled; [BODLEVEL=111]
->\# Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]
 >
 >attiny44at8.bootloader.low_fuses=0xE2
 >attiny44at8.bootloader.high_fuses=0xD7
