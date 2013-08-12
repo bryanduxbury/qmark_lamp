@@ -12,12 +12,23 @@ int threshold = 500;
 unsigned int pressCount = 0;
 
 int coin_sound_num_notes = 2;
-int coin_sound_notes[] = {NOTE_D6, NOTE_G6};
-int coin_sound_note_durations[] = {16, 2};
+int coin_sound_notes[] = {
+  NOTE_D6, NOTE_G6};
+int coin_sound_note_durations[] = {
+  16, 2};
 
 int oneup_sound_num_notes = 6;
-int oneup_sound_notes[] = {NOTE_E6, NOTE_G6, NOTE_E7, NOTE_C7, NOTE_D7, NOTE_G7};
-int oneup_sound_note_durations[] = {8, 8, 8, 8, 8, 8};
+int oneup_sound_notes[] = {
+  NOTE_E6, NOTE_G6, NOTE_E7, NOTE_C7, NOTE_D7, NOTE_G7};
+int oneup_sound_note_durations[] = {
+  8, 8, 8, 8, 8, 8};
+
+int startheme_sound_num_notes = 20;
+int startheme_sound_notes[] = {
+  NOTE_C6, NOTE_C6, NOTE_C6, NOTE_D5, NOTE_C6, NOTE_C6, NOTE_D5, NOTE_C6, NOTE_D5, NOTE_C6, 
+  NOTE_B5, NOTE_B5, NOTE_B5, NOTE_C5, NOTE_B5, NOTE_B5, NOTE_C5, NOTE_B5, NOTE_C5, NOTE_B5};
+int startheme_sound_note_durations[] = {
+  6, 6, 6, 12,6,6,12,12,12,6,6,6, 6, 12,6,6,12,12,12,6};
 
 CapSense cs_4_2 = CapSense(CAP_SENSOR_SEND_PIN, CAP_SENSOR_RECEIVE_PIN);
 
@@ -47,19 +58,7 @@ void playSound(int speaker_pin, int num_notes, int notes[], int durations[]) {
 }
 
 boolean checkSensor() {
-//  if (digitalRead(10) == HIGH) {
-//    return true;
-//  }
-//  return false;
   int readValue = cs_4_2.capSense(30);
-//  if (readValue == -2) {
-//    for (int i = 0; i < 2; i++) {
-//      digitalWrite(LIGHT_PIN, HIGH);
-//      delay(500);
-//      digitalWrite(LIGHT_PIN, LOW);
-//      delay(500);
-//    }
-//  }
   return readValue > threshold;
 }
 
@@ -67,7 +66,7 @@ void loop() {
   if (checkSensor()) {
     // the sensor was touched! increment the press count
     pressCount++;
-    
+
     // toggle the light state
     if (pressCount % 2 == 0) {
       digitalWrite(LIGHT_PIN, LOW);
@@ -77,23 +76,30 @@ void loop() {
 
     // if this is the 8th touch, then play the "one up" sound
     if (pressCount % 8 == 0) {
-      playSound(SPEAKER_PIN, oneup_sound_num_notes, oneup_sound_notes, oneup_sound_note_durations);
+      if (pressCount % 56 == 0) {
+        // star theme, plays twice, lights flash on and off
+        for(int i=0;i<2;i++){
+          for(int StarCounter = 0; StarCounter < startheme_sound_num_notes; StarCounter++){
+            if (StarCounter % 2 == 0) {
+              digitalWrite(LIGHT_PIN, LOW);
+            } else {
+              digitalWrite(LIGHT_PIN, HIGH);
+            }
+            playSound(SPEAKER_PIN, 1, &startheme_sound_notes[StarCounter], &startheme_sound_note_durations[StarCounter]);
+          }
+        }
+        delay(1000/startheme_sound_note_durations[startheme_sound_num_notes-1] * 1.3);
+        digitalWrite(LIGHT_PIN, LOW);
+      } else {
+        playSound(SPEAKER_PIN, oneup_sound_num_notes, oneup_sound_notes, oneup_sound_note_durations);
+      }
     } else {
       // always play the "coin" sound
       playSound(SPEAKER_PIN, coin_sound_num_notes, coin_sound_notes, coin_sound_note_durations);
     }  
-//    delay(100);
-    // to "de-bounce" the touch, don't loop around again until the sensor check returns false
-//    int state = LOW;
     while (checkSensor()) {
-//      if (state == HIGH) {
-//        state = LOW;
-//      } else {
-//        state = HIGH;
-//      }
-//      digitalWrite(LIGHT_PIN, state);
       delay(25);
     }
   }
-//  delay(25);
 }
+
