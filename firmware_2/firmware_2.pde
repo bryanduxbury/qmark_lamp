@@ -8,7 +8,7 @@
 #define CAP_SENSOR_SEND_PIN 3
 #define CAP_SENSOR_RECEIVE_PIN 2
 
-int threshold = 500;
+int threshold = 200;
 unsigned int pressCount = 0;
 
 int coin_sound_num_notes = 2;
@@ -25,8 +25,8 @@ int oneup_sound_note_durations[] = {
 
 int startheme_sound_num_notes = 20;
 int startheme_sound_notes[] = {
-  NOTE_C6, NOTE_C6, NOTE_C6, NOTE_D5, NOTE_C6, NOTE_C6, NOTE_D5, NOTE_C6, NOTE_D5, NOTE_C6, 
-  NOTE_B5, NOTE_B5, NOTE_B5, NOTE_C5, NOTE_B5, NOTE_B5, NOTE_C5, NOTE_B5, NOTE_C5, NOTE_B5};
+  NOTE_C7, NOTE_C7, NOTE_C7, NOTE_D6, NOTE_C7, NOTE_C7, NOTE_D6, NOTE_C7, NOTE_D6, NOTE_C7, 
+  NOTE_B6, NOTE_B6, NOTE_B6, NOTE_C6, NOTE_B6, NOTE_B6, NOTE_C6, NOTE_B6, NOTE_C6, NOTE_B6};
 int startheme_sound_note_durations[] = {
   6, 6, 6, 12,6,6,12,12,12,6,6,6, 6, 12,6,6,12,12,12,6};
 

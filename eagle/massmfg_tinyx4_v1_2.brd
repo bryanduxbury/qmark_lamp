@@ -116,8 +116,9 @@
 <text x="54.0004" y="64.8716" size="1.778" layer="25" rot="R270">SPEAKER</text>
 <text x="12.7" y="43.815" size="1.778" layer="25">SUPPLY</text>
 <text x="33.4518" y="19.4564" size="1.778" layer="25">XTAL</text>
-<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.2.2</text>
-<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 8/1/2013</text>
+<text x="1.7526" y="72.6186" size="1.778" layer="25">qmark lamp production v1.2.3</text>
+<text x="1.5748" y="70.1294" size="1.778" layer="25">bryan duxbury 8/16/2013</text>
+<hole x="17.78" y="17.78" drill="6.35"/>
 </plain>
 <libraries>
 <library name="avr-5">
@@ -1861,10 +1862,6 @@ design rules under a new name.</description>
 <via x="40.5892" y="64.0334" extent="1-16" drill="0.599440625"/>
 </signal>
 </signals>
-<errors>
-<approved hash="5,1,e384f8c742453cc1"/>
-<approved hash="5,1,3f84f8dd406c6ac0"/>
-</errors>
 </board>
 </drawing>
 </eagle>
